@@ -19,7 +19,7 @@ scoreboard = Scoreboard()
 
 screen.listen()
 while game_is_on:
-    time.sleep(0.1)
+    time.sleep(ball.move_speed)
     screen.update()
     scoreboard.draw_line()
     ball.move()
@@ -33,6 +33,10 @@ while game_is_on:
         ball.change_direction_x()
     if ball.xcor() > 380:
         ball.reset()
+        scoreboard.score_right()
+    if ball.xcor() < -380:
+        ball.reset()
+        scoreboard.score_left()
 
 
 screen.exitonclick()
